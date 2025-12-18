@@ -15,6 +15,6 @@ Rarry is a web-based platform that allows to create games or projects using visu
 
 ## Get Started
 
-1. Go to the [Rarry](https://scratch.mit.edu/) website.
+1. Go to the [Rarry](https://rarry.vercel.app/) website.
 2. Click the "Launch the Editor" button.
 3. Start dragging blocks and bring your ideas to life!
