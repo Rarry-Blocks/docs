@@ -75,12 +75,12 @@ Here's a full list of available properties you can use when defining blocks insi
 You can control how an output block looks using the `outputShape` property.  
 These are the supported values:
 
-| Value | Shape     | Description                                   |
-| ----- | --------- | --------------------------------------------- |
-| `1`   | Round     | Default shape used for Numbers, Strings, etc. |
-| `2`   | Hexagonal | Used for Booleans (true/false)                |
-| `3`   | Square    | Used for custom data types                    |
-| `4`   | Bowl      | Used for Arrays (lists)                       |
-| `5`   | Pillow    | Used for Objects                              |
+| Value | Shape     | Description                                    |
+| ----- | --------- | ---------------------------------------------- |
+| `1`   | Hexagonal | Used for Booleans (true/false)                 |
+| `2`   | Round     | Default shape, used for Numbers, Strings, etc. |
+| `3`   | Square    | Used for custom data types                     |
+| `4`   | Bowl      | Used for Arrays (lists)                        |
+| `5`   | Pillow    | Used for Objects                               |
 
 Each of these shapes is purely visual, they don't change how code generation works, but they help distinguish block types or categories visually.
