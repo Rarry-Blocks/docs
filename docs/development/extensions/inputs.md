@@ -1,3 +1,7 @@
+---
+sidebar_position: 3
+---
+
 # Dealing With Fields
 
 In most of the cases, you will want blocks that can accept fields (example: the "say" block).

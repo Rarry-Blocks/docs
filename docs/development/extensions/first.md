@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # Your First Extension
 
 Let's start by creating a simple extension to learn the syntax and how to add stuff:
