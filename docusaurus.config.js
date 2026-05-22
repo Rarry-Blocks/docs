@@ -88,7 +88,7 @@ const config = {
             label: "Development",
           },
           {
-            href: "https://github.com/ddededodediamante/rarry",
+            href: "https://github.com/Rarry-Blocks",
             label: "GitHub",
             position: "right",
           },
@@ -123,17 +123,17 @@ const config = {
             title: "More",
             items: [
               {
-                label: "Website GitHub",
-                href: "https://github.com/ddededodediamante/rarry",
+                label: "Organization GitHub",
+                href: "https://github.com/Rarry-Blocks/",
               },
               {
                 label: "Docs GitHub",
-                href: "https://github.com/ddededodediamante/rarry",
+                href: "https://github.com/Rarry-Blocks/docs",
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Rarry, Inc.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Rarry Blocks, Org.`,
       },
       prism: {
         theme: prismThemes.github,
