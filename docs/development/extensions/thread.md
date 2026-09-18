@@ -2,7 +2,7 @@
 sidebar_position: 8
 ---
 
-# The Thread API (trusted extensions)
+# Thread API
 
 When an extension runs as **trusted** (the "Run as trusted extension" checkbox, or a built-in extension), its `code` handlers run directly on the page and are called as `handler(inputs, thread)`. The second argument is the current VM **Thread** that is executing the script.
 

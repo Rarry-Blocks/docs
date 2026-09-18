@@ -2,7 +2,7 @@
 sidebar_position: 7
 ---
 
-# The Sandbox API (untrusted extensions)
+# Sandbox API
 
 Custom extensions you add through the **Custom Extensions** popup are _untrusted_ unless you tick "Run as trusted extension". Untrusted extensions do **not** run directly on the page.
 
@@ -80,7 +80,7 @@ Because these handlers are async, both blocks set `promise: true` so the VM wait
 
 ## Limitations
 
-- **No `thread`.** The worker has no access to the running VM. For per-thread variables use the trusted path instead (see [The Thread API](./thread.md)).
+- **No `thread`.** The worker has no access to the running VM. For per-thread variables use the trusted path instead (see the [Thread API](./thread.md)).
 - **No statement inputs.** Statement fields can't run inside the worker, so their value is left out of `inputs`. Use value, menu and output blocks only.
 - Untrusted blocks always go through the worker, so there's always at least one frame of round-trip latency.
 
