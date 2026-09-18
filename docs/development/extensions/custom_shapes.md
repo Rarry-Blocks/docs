@@ -6,26 +6,26 @@ sidebar_position: 5
 
 Shapes are useful to differentiate between types in Rarry. There are built-in shapes, but you might want to add your own shapes.
 
-Inside of your extension class, let's add this new function:
+Inside your extension descriptor, add a `shapes` key:
 
 ```js
-registerShapes() {
-  return {
+Rarry.registerExtension({
+  id: "myShapeExtension",
+
+  shapes: {
     // we'll add stuff here later
-  };
-}
+  },
+});
 ```
 
-To add a new shape, add a new function for your type, the name should match the name of your type:
+To add a new shape, add an entry for your type. The key should match the name you will use as the connection check:
 
 ```js
-registerShapes() {
-  return {
-    yabadaba: (height, extra, up, right, svg) => {
-      return ();
-    },
-  };
-}
+shapes: {
+  yabadaba: (height, extra, up, right, svgPaths) => {
+    return "";
+  },
+},
 ```
 
 ### Parameters
@@ -72,13 +72,11 @@ For our template path `m 0 0 l -5 10 l 5 10`, the total vertical travel is `10 +
 Your shape function needs to return an SVG path string. You can build this string however you like, but raw template literals work fine.
 
 ```js
-registerShapes() {
-  return {
-    yabadaba: (height, extra, up, right, svg) => {
-      return `l -5 10 l 5 10`;
-    },
-  };
-}
+shapes: {
+  yabadaba: (height, extra, up, right, svgPaths) => {
+    return `l -5 10 l 5 10`;
+  },
+},
 ```
 
 This will compile, but it won't scale with the block and it will ignore the `up` and `right` directions. Let's fix both of those things.
@@ -90,7 +88,7 @@ Replace the hardcoded `10` values with expressions based on `height` and `extra`
 A simple way to split the height evenly is to use halves:
 
 ```js
-yabadaba: (height, extra, up, right, svg) => {
+yabadaba: (height, extra, up, right, svgPaths) => {
   const half = (height + extra) / 2;
   return `l -5 ${half} l 5 ${half}`;
 },
@@ -109,7 +107,7 @@ Right now the shape always draws downward and always juts to the left. But the r
 Multiply any **vertical** movement by `up`, and any **horizontal** movement by `right`:
 
 ```js
-yabadaba: (height, extra, up, right, svg) => {
+yabadaba: (height, extra, up, right, svgPaths) => {
   const half = (height + extra) / 2;
   return `l ${-5 * right} ${half * up} l ${5 * right} ${half * up}`;
 },
@@ -122,7 +120,7 @@ Your function should always use `up` and `right`. If you skip this, the shape wi
 You'll notice the shape above just cuts directly into the text. You can add a small horizontal line at the start and end to create a bit of indentation from the block edge. This is optional but gives the shape a cleaner look:
 
 ```js
-yabadaba: (height, extra, up, right, svg) => {
+yabadaba: (height, extra, up, right, svgPaths) => {
   const depth = height / 4;
   const half  = (height + extra) / 2;
   return (
@@ -150,11 +148,17 @@ The path must return to the same x-offset it started at by the time it finishes.
 ![Final shape result](/img/custom-shapes-finalresult.png)
 
 ```js
-registerShapes() {
-  return {
-    yabadaba: (height, extra, up, right, svg) => {
+Rarry.registerExtension({
+  id: "myShapeExtension",
+
+  category: {
+    name: "My Shape Extension",
+  },
+
+  shapes: {
+    yabadaba: (height, extra, up, right, svgPaths) => {
       const depth = height / 4;
-      const half  = (height + extra) / 2;
+      const half = (height + extra) / 2;
       return (
         `h ${depth * right}` +
         `l ${depth * right} ${half * up}` +
@@ -162,8 +166,21 @@ registerShapes() {
         `h ${-depth * right}`
       );
     },
-  };
-}
+  },
+
+  blocks: [
+    {
+      type: Rarry.BlockType.OUTPUT,
+      id: "yabadaba",
+      text: "yabadaba",
+      outputType: "yabadaba", // must match the shape name above
+    },
+  ],
+
+  code: {
+    yabadaba: () => "yabadaba",
+  },
+});
 ```
 
-Any block in your extension that uses `yabadaba` as its output or input type will now render with this custom connector shape.
+Any block in your extension that uses `yabadaba` as its `outputType` (or as a value field's `type`) will now render with this custom connector shape.
