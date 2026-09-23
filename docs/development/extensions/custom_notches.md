@@ -8,6 +8,10 @@ Notches are the connectors on the top and bottom of statement blocks. Just like 
 
 If you haven't already, read [Custom Shapes](./custom_shapes.md) first. Notches use the same SVG path helpers, so most of what you learned there applies here too.
 
+:::note
+Like custom shapes, custom notches are only registered for **trusted** extensions. Untrusted extensions' `notches` are ignored.
+:::
+
 ## The `notches` Key
 
 Add a `notches` key to your descriptor. Each entry is **keyed by the statement check type** you use in `statementType` / `accepts`, and provides a shape for both sides of the connection:

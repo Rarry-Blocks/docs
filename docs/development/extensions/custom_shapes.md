@@ -6,6 +6,10 @@ sidebar_position: 5
 
 Shapes are useful to differentiate between types in Rarry. There are built-in shapes, but you might want to add your own shapes.
 
+:::note
+Custom shapes are only registered for **trusted** extensions (see [The Sandbox API](./sandbox_api.md)). Untrusted extensions run in a worker and their `shapes` are ignored.
+:::
+
 Inside your extension descriptor, add a `shapes` key:
 
 ```js

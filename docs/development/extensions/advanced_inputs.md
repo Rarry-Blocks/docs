@@ -142,7 +142,11 @@ blocks: [
 ```js
 code: {
   if: function* (inputs) {
-    if (inputs.bool) yield* inputs.code();
+    if (inputs.bool && inputs.code) yield* inputs.code();
   },
 },
 ```
+
+:::note
+A statement input is only present in `inputs` when at least one block is attached to it, so always check it before calling it.
+:::

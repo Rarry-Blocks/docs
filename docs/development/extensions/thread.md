@@ -22,6 +22,16 @@ Rarry runs each script (e.g. one `when flag clicked` stack, a key event, a clone
 
 Variables are lost when the thread stops, and each thread starts empty, so they never leak between scripts.
 
+## Generator and async handlers
+
+Trusted handlers can be written three ways:
+
+| Handler                 | How the VM runs it                                                                  |
+| ----------------------- | ----------------------------------------------------------------------------------- |
+| Plain function          | Called and its return value is used immediately.                                    |
+| `async` function        | Set `promise: true` on the block and the VM waits for the returned promise.         |
+| Generator (`function*`) | Run with `yield*`, so it can `yield` to pause for a frame and run statement inputs. |
+
 ## Example
 
 ```js

@@ -115,7 +115,7 @@ const config = {
               },
               {
                 label: "Website",
-                href: "https://rarry.vercel.app/",
+                href: "https://rarry.link/",
               },
             ],
           },
